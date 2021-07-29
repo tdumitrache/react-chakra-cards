@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+import React from 'react';
+import { FaWallet, FaPaypal } from "react-icons/fa"
+import Invoices from './components/Invoices';
+import Sales from './components/Sales';
+import Payment from './components/Payment';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.payments = [
+      {
+        title: 'Salary',
+        description: 'Belong Interactive',
+        value: '+$2000',
+        icon: FaWallet
+      },
+      {
+        title: 'Paypal',
+        description: 'Freelance Payment',
+        value: '$455.00',
+        icon: FaPaypal
+      }
+    ]
+  }
+
+  render() {
+    return (
+      <div>
+        <Invoices />
+        <Sales />
+        <Payment 
+        left="670px"
+        title={this.payments[0].title}
+        description={this.payments[0].description}
+        value={this.payments[0].value}
+        icon={this.payments[0].icon}
+        />
+        <Payment 
+        left="930px"
+        title={this.payments[1].title}
+        description={this.payments[1].description}
+        value={this.payments[1].value}
+        icon={this.payments[1].icon}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
